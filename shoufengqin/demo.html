@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        拉萨手风琴
+    </title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .wrap{
+            width: 1090px;
+            height: 429px;
+            /* background-color: blue; */
+            /* margin: 100px auto 100px auto; */
+            margin: 100px auto;
+            /* 效果同上 */
+        }
+        .list{
+            float: left;
+            /* 浮动，将纵向转为横向，解决块级元素特点问题*/
+            /* 浮动脱离文档流 */
+            /* 放在前面进行页面性能优化 */
+            width: 100px;
+            height: 429px;
+            /* background-color: red; */
+            background-image: url("images/1.jpg");
+
+        }
+        .list:nth-child(1){
+            background-image: url("images/1.jpg");
+        }
+        .list:nth-child(2){
+            background-image: url("images/2.jpg");
+        }
+        .list:nth-child(3){
+            background-image: url("images/3.jpg");
+        }
+        .list:nth-child(4){
+            background-image: url("images/4.jpg");
+            width: 789px;
+        }
+        .hide{
+            width: 100px;
+            height: 429px;
+            background-color: rgba(0, 0, 0, .6);
+            /* 红色 绿色 蓝色 透明度（0-1） */
+        }
+        .hide p{
+            margin: 0 auto;
+            writing-mode: vertical-lr;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="list">
+            <div class="hide">
+                <p>明月几时有</p>
+            </div>
+        </div>
+        <div class="list">
+            <div class="hide"></div>
+        </div>
+        <div class="list">
+            <div class="hide"></div>
+        </div>
+        <div class="list">
+            <div class="hide"></div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        //1、给四个list绑定悬停事件
+        $(".list").hover(function(){
+            $(this).stop().animate({
+                width : '789px'
+            }, 500).siblings().stop().animate({
+                width: '100px'
+            })
+        });
+    </script>
+</body>
+</html>
